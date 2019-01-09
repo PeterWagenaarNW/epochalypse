@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 # encoding: utf-8
 
+import os
 import sys
 
 # Workflow3 supports Alfred 3's new features. The `Workflow` class
@@ -94,6 +95,7 @@ def main(wf):
     # Get args from Workflow3, already in normalized Unicode.
     # This is also necessary for "magic" arguments to work.
 
+    icon = os.path.join(os.path.dirname(__file__), 'clock.png')
     args = wf.args
     for a in args:
         try:
@@ -103,7 +105,7 @@ def main(wf):
                 # def add_item(self, title, subtitle='', arg=None, autocomplete=None,
                 #              valid=False, uid=None, icon=None, icontype=None, type=None,
                 #              largetext=None, copytext=None, quicklookurl=None, match=None):
-                wf.add_item(title=t, subtitle=ts, arg=ts, valid=True)
+                wf.add_item(title=t, subtitle=ts, arg=ts, valid=True, icon=icon)
         except ValueError:
             pass
         
